@@ -56,6 +56,7 @@
 
 <script src="//js.arcgis.com/3.13compact/"></script>
 <script>
+
   require([
     "esri/arcgis/Portal", "esri/arcgis/OAuthInfo", "esri/IdentityManager",
     "dojo/dom-style", "dojo/dom-attr", "dojo/dom", "dojo/on", "dojo/_base/array",
@@ -118,16 +119,17 @@
       //See list of valid item types here:  http://www.arcgis.com/apidocs/rest/index.html?itemtypes.html
       //See search reference here:  http://www.arcgis.com/apidocs/rest/index.html?searchreference.html
       var queryParams = {
-        q: "owner:" + portalUser.username,
+        q: "owner:" + portalUser.username + " AND type:\"Feature Service\"",
         sortField: "numViews",
         sortOrder: "desc",
-        num: 20
+        num: 100
       };
 
       portal.queryItems(queryParams).then(createGallery);
     }
 
     function createGallery(items){
+      console.log(items);
       var htmlFragment = "";
 
       arrayUtils.forEach(items.results, function (item){
