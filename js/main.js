@@ -37,6 +37,7 @@ require([
     });
 
     function displayItems(){
+
       new arcgisPortal.Portal("https://www.arcgis.com").signIn().then(
         function (portalUser){
           console.log("Signed in to the portal: ", portalUser);
@@ -57,51 +58,52 @@ require([
     function queryPortal(portalUser){
       var portal = portalUser.portal;
 
-      //See list of valid item types here:  http://www.arcgis.com/apidocs/rest/index.html?itemtypes.html
-      //See search reference here:  http://www.arcgis.com/apidocs/rest/index.html?searchreference.html
-      var queryParams = {
-        q: "owner:" + portalUser.username + " AND type:\"Feature Service\"",
-        sortField: "numViews",
-        sortOrder: "desc",
-        num: 100
-      };
+      numbItems = 0
 
-      portal.queryItems(queryParams).then(createGallery);
-    }
+      portalUser.getItems().then(function(rootItems){
+        $('#featureSelect').append($('<optgroup>', {
+              label: 'Root',
+              id: 'root'
+        }));
 
-    function createGallery(items){
-      console.log(items);
-      
-      numbItems = 0      
-
-      var htmlFragment = "";
-
-      arrayUtils.forEach(items.results, function (item){
-        //only capture items labeled as a 'Hosted Service'
-        if (item.typeKeywords.indexOf("Hosted Service") >= 0) {
-
-          numbItems += 1;
-
-          htmlFragment += (
-          "<div class=\"esri-item-container\">" +
-          (
-            item.thumbnailUrl ?
-            "<div class=\"esri-image\" style=\"background-image:url(" + item.thumbnailUrl + ");\"></div>" :
-              "<div class=\"esri-image esri-null-image\">Thumbnail not available</div>"
-          ) +
-          (
-            item.title ?
-            "<div class=\"esri-title\">" + (item.title || "") + "</div>" :
-              "<div class=\"esri-title esri-null-title\">Title not available</div>"
-          ) +
-          "</div>"
-          );
-        };
-
-        domAttr.set("numbItems", "innerHTML", numbItems);
-        
+        rootItems.forEach(function(rootItem){
+          $('#root').append($('<option>', {
+                  text: rootItem.title,
+                  class: 'select-item'
+          }));
+        });
       });
 
-      dom.byId("itemGallery").innerHTML = htmlFragment;
+      portalUser.getFolders().then(function(folders){
+        folders.forEach(function(folder){
+          $('#featureSelect').append($('<optgroup>', {
+              label: folder.title,
+              id: folder.title
+          }));
+
+          folder.getItems().forEach(function(item){
+            if (item.typeKeywords.indexOf("Hosted Service") >= 0) {
+              numbItems += 1;
+              console.log(folder.title);
+              $('#' + folder.title).append($('<option>', {
+                  text: item.title,
+                  class: 'select-item'
+              }));
+            }
+          }).then(function(){
+            domAttr.set("numbItems", "innerHTML", numbItems);
+            $('#featureSelect').selectpicker('refresh');
+            $('#inputs').fadeIn(800);
+          })
+        });
+      });
     }
   });
+
+$( document ).ready(function() {
+  console.log("ready");
+  $('.selectpicker').selectpicker({
+      style: 'btn-primary',
+      size: "auto"
+  });
+});

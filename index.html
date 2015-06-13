@@ -6,12 +6,17 @@
   <title>Feature Layer Manager</title>
 
   <script src="./js/pace.min.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="//js.arcgis.com/3.13compact/"></script>
   <script src="./js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 
   <link rel="stylesheet" href="./css/pace-theme-minimal.css"/>
   <link rel="stylesheet" href="//js.arcgis.com/3.13compact/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="./css/style.css" />  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" />
 
   </head>
 
@@ -27,6 +32,16 @@
       <span id="sign-out" class="action">Sign Out</span>
       &nbsp;-&nbsp;
       Number of Items: <span id="numbItems" style="font-weight: bold;"></span>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" id="inputs" style="display: none;">
+          <select id="featureSelect" class="selectpicker show-tick" data-live-search="true" data-width="50%" title='Choose one of the following...'>
+            <option disabled="disabled">Select a Hosted Feature Service ...</option>         
+          </select>
+        </div>
+      </div>
     </div>
     
     <div id="itemGallery" class="esri-item-gallery" style="width: 100%;"></div>

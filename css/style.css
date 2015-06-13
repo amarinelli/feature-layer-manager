@@ -43,3 +43,16 @@ html, body {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.select-item {
+  font-size: large;
+}
+
+#inputs {
+    text-align: center;
+}
+
+.btn-primary {
+  font-family: monospace;
+  font-size: xx-large;
+}
