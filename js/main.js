@@ -58,7 +58,7 @@ require([
     function queryPortal(portalUser){
       var portal = portalUser.portal;
 
-      numbItems = 0
+      numbItems = 0;
 
       portalUser.getItems().then(function(rootItems){
         $('#featureSelect').append($('<optgroup>', {
@@ -67,10 +67,14 @@ require([
         }));
 
         rootItems.forEach(function(rootItem){
-          $('#root').append($('<option>', {
-                  text: rootItem.title,
-                  class: 'select-item'
-          }));
+          if (rootItem.typeKeywords.indexOf("Hosted Service") >= 0) {
+            numbItems += 1;
+            $('#root').append($('<option>', {
+                    text: rootItem.title,
+                    class: 'select-item',
+                    'data-content': "<span style='padding-left: 10px;'>" + rootItem.title + "</span>"
+            }));
+          };
         });
       });
 
@@ -84,14 +88,15 @@ require([
           folder.getItems().forEach(function(item){
             if (item.typeKeywords.indexOf("Hosted Service") >= 0) {
               numbItems += 1;
-              console.log(folder.title);
               $('#' + folder.title).append($('<option>', {
                   text: item.title,
-                  class: 'select-item'
+                  class: 'select-item',
+                  'data-content': "<span style='padding-left: 10px;'>" + item.title + "</span>"
               }));
             }
           }).then(function(){
             domAttr.set("numbItems", "innerHTML", numbItems);
+
             $('#featureSelect').selectpicker('refresh');
             $('#inputs').fadeIn(800);
           })
@@ -106,4 +111,9 @@ $( document ).ready(function() {
       style: 'btn-primary',
       size: "auto"
   });
+
+  $( "#featureSelect" ).change(function() {
+    console.log($('#featureSelect').val());
+  });
+
 });
