@@ -71,23 +71,35 @@ require([
 
     function createGallery(items){
       console.log(items);
+      
+      numbItems = 0      
+
       var htmlFragment = "";
 
       arrayUtils.forEach(items.results, function (item){
-        htmlFragment += (
-        "<div class=\"esri-item-container\">" +
-        (
-          item.thumbnailUrl ?
-          "<div class=\"esri-image\" style=\"background-image:url(" + item.thumbnailUrl + ");\"></div>" :
-            "<div class=\"esri-image esri-null-image\">Thumbnail not available</div>"
-        ) +
-        (
-          item.title ?
-          "<div class=\"esri-title\">" + (item.title || "") + "</div>" :
-            "<div class=\"esri-title esri-null-title\">Title not available</div>"
-        ) +
-        "</div>"
-        );
+        //only capture items labeled as a 'Hosted Service'
+        if (item.typeKeywords.indexOf("Hosted Service") >= 0) {
+
+          numbItems += 1;
+
+          htmlFragment += (
+          "<div class=\"esri-item-container\">" +
+          (
+            item.thumbnailUrl ?
+            "<div class=\"esri-image\" style=\"background-image:url(" + item.thumbnailUrl + ");\"></div>" :
+              "<div class=\"esri-image esri-null-image\">Thumbnail not available</div>"
+          ) +
+          (
+            item.title ?
+            "<div class=\"esri-title\">" + (item.title || "") + "</div>" :
+              "<div class=\"esri-title esri-null-title\">Title not available</div>"
+          ) +
+          "</div>"
+          );
+        };
+
+        domAttr.set("numbItems", "innerHTML", numbItems);
+        
       });
 
       dom.byId("itemGallery").innerHTML = htmlFragment;
