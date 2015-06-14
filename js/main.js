@@ -103,7 +103,17 @@ require([
         });
       });
     }
-  });
+	
+	function addHeading(parent, items, name) {
+	  	
+	}
+	
+	function addOptions(parent, ) {
+	  	
+	}
+	
+	
+  }); // end require
 
 $( document ).ready(function() {
   console.log("ready");
@@ -115,5 +125,4 @@ $( document ).ready(function() {
   $( "#featureSelect" ).change(function() {
     console.log($('#featureSelect').val());
   });
-
-});
+}); // end ready
