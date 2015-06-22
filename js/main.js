@@ -4,6 +4,7 @@ require([
     "dojo/domReady!"
   ], function (arcgisPortal, OAuthInfo, esriId,
     domStyle, domAttr, dom, on, arrayUtils){
+  	
     var info = new OAuthInfo({
       appId: "ZkkhbM0Eaws3OlbX",
       // Uncomment this line to prevent the user's signed in state from being shared
@@ -102,17 +103,7 @@ require([
           })
         });
       });
-    }
-	
-	function addHeading(parent, items, name) {
-	  	
-	}
-	
-	function addOptions(parent, ) {
-	  	
-	}
-	
-	
+    }	
   }); // end require
 
 $( document ).ready(function() {
