@@ -27,14 +27,30 @@
     </div>
 
     <div id="personalizedPanel" style="display: none; padding: 5px; text-align: center;">
-      Welcome <span id="userId" style="font-weight: bold;"></span>
-      &nbsp;-&nbsp;
-      <span id="sign-out" class="action">Sign Out</span>
-      &nbsp;-&nbsp;
-      Number of Items: <span id="numbItems" style="font-weight: bold;"></span>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand">
+              <img alt="Brand" width="20" height="20" src="img/logo.png">
+            </a>
+            <div class="nav navbar-nav navbar-right">
+              <p class="navbar-text navbar-right">Number of Items: <span id="numbItems" style="font-weight: bold;"></span></p>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="userId" aria-haspopup="true" aria-expanded="false"></span></a>
+                  <ul class="dropdown-menu">
+                    <li data-toggle="modal" data-target="#aboutModal" class="action"><a>About</a></li>
+                    <li><a id="sign-out" class="action">Sign Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>      
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid main">
       <div class="row">
         <div class="col-md-12" id="inputs" style="display: none;">
           <select id="featureSelect" class="selectpicker show-tick" data-live-search="true" data-width="50%" title='Choose one of the following...'>
@@ -43,8 +59,24 @@
         </div>
       </div>
     </div>
-    
-    <div id="itemGallery" class="esri-item-gallery" style="width: 100%;"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">About</h4>
+          </div>
+          <div class="modal-body">
+            <p>ArcGIS Online Feature Layer Manager&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     
   </body>
 </html>

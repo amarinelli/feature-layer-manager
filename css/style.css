@@ -39,9 +39,7 @@ html, body {
 }
 
 .action {
-  color: blue;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .select-item {
@@ -58,6 +56,10 @@ html, body {
     background-image: inherit;
     background-repeat: inherit;
     background-position:0px 0px;
+}
+
+.main {
+  padding-top: 55px;
 }
 
 #inputs {

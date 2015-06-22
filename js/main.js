@@ -4,7 +4,7 @@ require([
     "dojo/domReady!"
   ], function (arcgisPortal, OAuthInfo, esriId,
     domStyle, domAttr, dom, on, arrayUtils){
-  	
+
     var info = new OAuthInfo({
       appId: "ZkkhbM0Eaws3OlbX",
       // Uncomment this line to prevent the user's signed in state from being shared
@@ -43,7 +43,7 @@ require([
         function (portalUser){
           console.log("Signed in to the portal: ", portalUser);
 
-          domAttr.set("userId", "innerHTML", portalUser.fullName);
+          domAttr.set("userId", "innerHTML", portalUser.fullName + "<span class='caret'>");
           domStyle.set("anonymousPanel", "display", "none");
           domStyle.set("personalizedPanel", "display", "block");
 
