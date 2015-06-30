@@ -103,7 +103,7 @@ require([
           })
         });
       });
-    }	
+    }
   }); // end require
 
 $( document ).ready(function() {

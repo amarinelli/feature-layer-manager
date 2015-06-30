@@ -23,19 +23,32 @@
   <body class="claro">
 
     <div id="anonymousPanel" style="display: none; padding: 5px; text-align: center;">
-      <span id="sign-in" class="action">Sign In</span> and view your ArcGIS Online items.
+      <button id="sign-in" type="button" class="btn btn-success btn-lg">Login</button>
     </div>
 
-    <div id="personalizedPanel" style="display: none; padding: 5px; text-align: center;">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand">
-              <img alt="Brand" width="20" height="20" src="img/logo.png">
-            </a>
-            <div class="nav navbar-nav navbar-right">
-              <p class="navbar-text navbar-right">Number of Items: <span id="numbItems" style="font-weight: bold;"></span></p>
-              <ul class="nav navbar-nav navbar-right">
+    <div id="personalizedPanel" style="display: none;">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <img alt="Brand" width="20" height="20" src="img\features16.png">
+              </a>
+              <a class="navbar-brand" href="https://github.com/amarinelli/feature-layer-manager" target="_blank">
+                <img alt="Brand" width="20" height="20" src="img\GitHub-Mark-32px.png">
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">Number of Items: <span id="numbItems" style="font-weight: bold;"></span></p></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="userId" aria-haspopup="true" aria-expanded="false"></span></a>
                   <ul class="dropdown-menu">
@@ -44,17 +57,16 @@
                   </ul>
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </nav>      
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
     </div>
 
     <div class="container-fluid main">
       <div class="row">
         <div class="col-md-12" id="inputs" style="display: none;">
           <select id="featureSelect" class="selectpicker show-tick" data-live-search="true" data-width="50%" title='Choose one of the following...'>
-            <option disabled="disabled">Select a Hosted Feature Service ...</option>         
+            <option disabled="disabled">Select a Hosted Feature Service ...</option>
           </select>
         </div>
       </div>
@@ -77,6 +89,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    
+
   </body>
 </html>
