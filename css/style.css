@@ -62,8 +62,18 @@ html, body {
   /*padding-top: 20px;*/
 }
 
+#numbItems {
+    font-weight: bold;
+    font-size: 16px;
+}
+
 #inputs {
     text-align: center;
+}
+
+.welcome-text {
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .btn-primary {
@@ -71,10 +81,19 @@ html, body {
   font-size: xx-large;
 }
 
+.btn-xlg {
+    padding: 18px 28px;
+    font-size: 25px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
-  background-color: #7CABD3;
+    background-color: #7CABD3;
 }
 
 .dropdown-menu, open {
-  font-family: monospace;
+    font-family: monospace;
 }
