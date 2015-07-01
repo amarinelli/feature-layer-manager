@@ -83,13 +83,13 @@ require([
         folders.forEach(function(folder){
           $('#featureSelect').append($('<optgroup>', {
               label: folder.title,
-              id: folder.title
+              id: folder.title.replace(" ", "-")
           }));
 
           folder.getItems().forEach(function(item){
             if (item.typeKeywords.indexOf("Hosted Service") >= 0) {
               numbItems += 1;
-              $('#' + folder.title).append($('<option>', {
+              $('#' + folder.title.replace(" ", "-")).append($('<option>', {
                   text: item.title,
                   class: 'select-item',
                   'data-content': "<span style='padding-left: 10px;'>" + item.title + "</span>"
