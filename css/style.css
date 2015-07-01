@@ -58,6 +58,10 @@ html, body {
     background-position:0px 0px;
 }
 
+.navbar-brand {
+    cursor: pointer;
+}
+
 .main {
   /*padding-top: 20px;*/
 }
