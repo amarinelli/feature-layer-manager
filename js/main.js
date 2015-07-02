@@ -116,4 +116,6 @@ $( document ).ready(function() {
   $( "#featureSelect" ).change(function() {
     console.log($('#featureSelect').val());
   });
+
+  $('#GitHub-logo, #Home-logo').popover({'trigger': 'hover'});
 }); // end ready
