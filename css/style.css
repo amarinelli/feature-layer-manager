@@ -43,7 +43,7 @@ html, body {
 }
 
 .select-item {
-  background-image:url(http://cdn.arcgis.com/cdn/6344/js/jsapi/esri/css/images/item_type_icons/featureshosted16.png);
+  background-image:url(../img/features16.png);
   background-repeat:no-repeat;
   background-position:1000px 1000px;
 }
