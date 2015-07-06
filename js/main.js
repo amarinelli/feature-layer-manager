@@ -6,7 +6,7 @@ require([
     domStyle, domAttr, dom, on, arrayUtils){
 
     var info = new OAuthInfo({
-      appId: "ZkkhbM0Eaws3OlbX",
+      appId: "08amyvihKU2DfcxZ",
       // Uncomment this line to prevent the user's signed in state from being shared
       // with other apps on the same domain with the same authNamespace value.
       //authNamespace: "portal_oauth_inline",
