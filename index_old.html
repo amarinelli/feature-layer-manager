@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="ArcGIS Online Feature Layer Manager">
+  <meta name="author" content="Adam Marinelli">
+
+  <title>Feature Services</title>
+
+  <link rel="icon"
+      type="image/png"
+      href="img\features16.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="./css/style.css" />
+
+  </head>
+
+  <body>
+
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--white mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Home</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search" />
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">About</li>
+            <li class="mdl-menu__item">Contact</li>
+            <li class="mdl-menu__item">Legal information</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>hello@example.com</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons">arrow_drop_down</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item">hello@example.com</li>
+              <li class="mdl-menu__item">info@example.com</li>
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">delete</i>Trash</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">report</i>Spam</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">forum</i>Forums</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">flag</i>Updates</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">local_offer</i>Promos</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">shopping_cart</i>Purchases</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Social</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i></a>
+        </nav>
+      </div>
+    </div>
+
+
+    <div id="anonymousPanel" style="display: none; padding: 5px; text-align: center;">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a id="Home-logo" class="navbar-brand" onclick="window.location.reload()" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="Home">
+                <img alt="Brand" width="20" height="20" src="img\features16.png">
+              </a>
+              <a id="GitHub-logo" class="navbar-brand" href="https://github.com/amarinelli/feature-services" target="_blank" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="GitHub">
+                <img alt="Brand" width="20" height="20" src="img\GitHub-Mark-32px.png">
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">ArcGIS Online Feature Services</p></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li data-toggle="modal" data-target="#aboutModal" class="action"><a>About</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+      <button id="sign-in" type="button" class="btn btn-success btn-xlg">LOGIN</button> <span class="welcome-text">to access your account!</span>
+  </div><!-- /anonymousPanel -->
+
+    <div id="personalizedPanel" style="display: none;">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a id="Home-logo" class="navbar-brand" onclick="window.location.reload()" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="Home">
+                <img alt="Brand" width="20" height="20" src="img\features16.png">
+              </a>
+              <a id="GitHub-logo" class="navbar-brand" href="https://github.com/amarinelli/feature-services" target="_blank" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="GitHub">
+                <img alt="Brand" width="20" height="20" src="img\GitHub-Mark-32px.png">
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">Number of Items: <span id="numbItems"></span></p></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="userId" aria-haspopup="true" aria-expanded="false"></a>
+                  <ul class="dropdown-menu">
+                    <li data-toggle="modal" data-target="#aboutModal" class="action"><a>About</a></li>
+                    <li><a id="sign-out" class="action">Sign Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div><!-- /personalizedPanel -->
+
+    <div class="container-fluid main">
+      <div class="row">
+        <div class="col-md-12" id="inputs" style="display: none;">
+          <select id="featureSelect" class="selectpicker show-tick" data-live-search="true" data-width="75%" title='Choose one of the following...'>
+            <option disabled="disabled">Select a Hosted Feature Service ...</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">About</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>ArcGIS Online Feature Services</b></p>
+            <p>A tool for adminstering your ArcGIS Online hosted feature services</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- ArcGIS JSAPI -->
+    <script src="//js.arcgis.com/3.13compact/"></script>
+    <!-- Material Design Lite -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
